@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 const FileUpload = () => {
   const router = useRouter();
   const [uploading, setUploading] = React.useState(false);
-  const { mutate, isLoading} = useMutation({
+  const { mutate, isPending} = useMutation({
     mutationFn: async ({
       file_key,
       file_name,
@@ -50,7 +50,7 @@ const FileUpload = () => {
         }
         toast.success('Upload successful')
         mutate(data, {
-          onSuccess: ({ chat_id }) => {
+          onSuccess: () => {
             console.log(data)
             toast.success("Chat created!");
             // router.push(`/chat/${chat_id}`);
@@ -76,7 +76,7 @@ const FileUpload = () => {
         })}
       >
         <input {...getInputProps()} />
-        {uploading  ? (
+        {uploading || isPending ? (
           <>
             {/* loading state */}
             <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />

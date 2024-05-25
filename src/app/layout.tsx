@@ -34,9 +34,9 @@ export default function RootLayout({
             <UserButton />
           </SignedIn>
           {children}
+      <Toaster />
         </body>
       </html>
-        <Toaster />
       </Providers>
     </ClerkProvider>
   );
