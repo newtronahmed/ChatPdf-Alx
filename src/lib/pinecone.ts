@@ -10,7 +10,7 @@ import { getEmbeddings } from "./embeddings"; // Import the getEmbeddings functi
 //   RecursiveCharacterTextSplitter,
 // } from "@pinecone-database/doc-splitter";
 // import { getEmbeddings } from "./embeddings";
-// import { convertToAscii } from "./utils";
+import { convertToAscii } from "./utils";
 
 export const getPineconeClient = () => {
   return new Pinecone({
@@ -42,6 +42,17 @@ const documents = await Promise.all(pages.map(prepareDocument));
 
 
 // 3. vectorise and embed individual documents
+const vectors = await Promise.all(documents.flat().map(embedDocument));
+}
+//4. upload to pinecone
+const client = await getPineconeClient();
+const pineconeIndex = await client.index("chatpdf");
+const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+
+console.log("inserting vectors into pinecone");
+await namespace.upsert(vectors);
+
+return documents[0];
 }
 
 async function embedDocument(doc: Document) {
@@ -92,7 +103,7 @@ async function prepareDocument(page: PDFPage) {
 //   // 3. vectorise and embed individual documents
 //   const vectors = await Promise.all(documents.flat().map(embedDocument));
 
-//   // 4. upload to pinecone
+//4. upload to pinecone
 //   const client = await getPineconeClient();
 //   const pineconeIndex = await client.index("chatpdf");
 //   const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
