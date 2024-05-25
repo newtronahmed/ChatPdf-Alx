@@ -9,6 +9,7 @@ import {
 } from '@clerk/nextjs';
 import "./globals.css";
 import Providers from "@/components/Provider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-
+        <Toaster />
       </Providers>
     </ClerkProvider>
   );
