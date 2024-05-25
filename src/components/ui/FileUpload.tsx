@@ -50,8 +50,8 @@ const FileUpload = () => {
         }
         toast.success('Upload successful')
         mutate(data, {
-          onSuccess: () => {
-            console.log(data)
+          onSuccess: (successdata) => {
+            console.log(successdata)
             toast.success("Chat created!");
             // router.push(`/chat/${chat_id}`);
           },
