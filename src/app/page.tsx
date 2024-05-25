@@ -4,8 +4,8 @@ import { UserButton } from "@clerk/nextjs"
 import Link from "next/link";
 import { LogIn } from "lucide-react";
 
-export default async function Home() {
-  const { userId } = await auth();
+export default  function Home() {
+  const { userId } =  auth();
   const isAuth = !!userId;
   return (
     <div className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
