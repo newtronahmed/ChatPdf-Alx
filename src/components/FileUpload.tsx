@@ -47,13 +47,13 @@ const FileUpload = () => {
         if (!data?.file_key || !data.file_name) {
           toast.error("Something went wrong");
           return;
-        }
+        } 
         toast.success('Upload successful')
         mutate(data, {
-          onSuccess: (successdata) => {
-            console.log(successdata)
+          onSuccess: ({chat_id}) => {
+            //console.log(successdata)
             toast.success("Chat created!");
-            // router.push(`/chat/${chat_id}`);
+            router.push(`/chat/${chat_id}`);
           },
           onError: (err) => {
             toast.error("Error creating chat");
