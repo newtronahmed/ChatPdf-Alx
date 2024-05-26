@@ -1,5 +1,7 @@
 import { OpenAIApi, Configuration } from "openai-edge";
 
+require('dotenv').config()
+
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -10,9 +12,12 @@ export async function getEmbeddings(text: string) {
   try {
     const response = await openai.createEmbedding({
       model: "text-embedding-ada-002",
-      input: text.replace(/\n/g, " "),
+      input: text.replace(/\n/g, ' '),
     });
     const result = await response.json();
+    if (!result.data || result.data.length === 0) {
+      throw new Error('No data returned from OpenAI API');
+    }
     return result.data[0].embedding as number[];
   } catch (error) {
     console.log("error calling openai embeddings api", error);
