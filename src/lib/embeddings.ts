@@ -1,12 +1,13 @@
 import * as https from 'https';
 
+
 export async function getEmbeddings(text: string): Promise<number[]> {
   const url = "https://api.jina.ai/v1/embeddings";
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer jina_f0864e2a766f46f0a4d1ad677c5ecb28D5sMaXJbBhFII3yko3Sunc3kE2Ru',
+      'Authorization': process.env.JINA_API_KEY,
     }
   };
 
