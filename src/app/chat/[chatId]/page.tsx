@@ -1,4 +1,4 @@
-//import PDFViewer from "@/components/PDFViewer";
+import PDFViewer from "@/components/PDFViewer";
 import ChatSideBar from "@/components/ChatSideBar";
 import React from "react";
 import { eq } from "drizzle-orm";
@@ -26,7 +26,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
     return redirect("/");
   }
 
-  //const currentChat = _chats.find((chat) => chat.id === parseInt(chatId));
+  const currentChat = _chats.find(chat => chat.id === parseInt(chatId));
 
   return (
     <div className="flex max-h-screen overflow-scroll">
@@ -38,7 +38,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
         {/* pdf viewer */}
         <div className="max-h-screen p-4 oveflow-scroll flex-[5]">
-         
+          <PDFViewer pdf_url={currentChat?.pdfUrl || ""} />
         </div>
         {/* chat component */}
         <div className="flex-[3] border-l-4 border-l-slate-200">
