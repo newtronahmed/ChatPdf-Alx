@@ -13,6 +13,7 @@
     "@aws-sdk/client-s3": "^3.583.0",
     "@clerk/nextjs": "^5.1.0",
     "@langchain/community": "^0.2.3",
+    "@nanostores/react": "github:ai/react",
     "@neondatabase/serverless": "^0.9.3",
     "@pinecone-database/doc-splitter": "^0.0.1",
     "@pinecone-database/pinecone": "^2.2.1",
@@ -20,6 +21,7 @@
     "@tanstack/react-query": "^5.38.0",
     "@testing-library/react": "^15.0.7",
     "@types/md5": "^2.3.5",
+    "ai": "^3.1.17",
     "aws-sdk": "^2.1628.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
@@ -42,7 +44,8 @@
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ui": "^0.2.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
