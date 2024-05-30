@@ -5,7 +5,7 @@ const options = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer jina_f0864e2a766f46f0a4d1ad677c5ecb28D5sMaXJbBhFII3yko3Sunc3kE2Ru',
+    'Authorization': 'Bearer'
   }
 };
 
