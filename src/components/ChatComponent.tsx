@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { useChat } from "ai/react";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
-//import MessageList from "./MessageList";
+import MessageList from "./MessageList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Message } from "ai";
@@ -14,7 +14,9 @@ type Props = { chatId: number };
 const ChatComponent = ({ chatId }: Props) => {
   
 
-  const { input, handleInputChange, handleSubmit} = useChat()
+  const { input, handleInputChange, handleSubmit, messages} = useChat({
+    api: "/api/chat",
+  });
   return (
     <div
       className="relative max-h-screen overflow-scroll"
@@ -26,6 +28,8 @@ const ChatComponent = ({ chatId }: Props) => {
       </div>
 
     {/* message list */}
+    <MessageList messages={messages} isLoading={false} />
+
       <form
         onSubmit={handleSubmit}
         className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"
