@@ -45,7 +45,7 @@ const vectors = await Promise.all(documents.flat().map(embedDocument));
 
 //4. upload to pinecone
 const client = await getPineconeClient();
-const pineconeIndex = await client.index("chatpdf-alx");
+const pineconeIndex = await client.index("chat-pdf-alx-2"); //changed this 
 const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
 //const client = await getPineconeClient();
