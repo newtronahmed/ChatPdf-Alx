@@ -47,11 +47,7 @@ const client = await getPineconeClient();
 const pineconeIndex = await client.index("chat-pdf-alx-2");
 const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
-//const client = await getPineconeClient();
-//await client.deleteIndex('chatpdf-alx');  // Delete the old index
-//await client.createIndex('chatpdf-alx', 768);  // Create a new index with the correct dimension
-//const pineconeIndex = await client.index('chatpdf-alx');
-//const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+
 
 console.log("inserting vectors into pinecone");
 await namespace.upsert(vectors);
@@ -59,6 +55,7 @@ await namespace.upsert(vectors);
 return documents[0];
 }
 
+// 5. embed the document
 async function embedDocument(doc: Document) {
   try {
     const embeddings = await getEmbeddings(doc.pageContent);

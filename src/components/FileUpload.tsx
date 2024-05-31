@@ -8,8 +8,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-// https://github.com/aws/aws-sdk-js-v3/issues/4126
-
+// FileUpload component
 const FileUpload = () => {
   const router = useRouter();
   const [uploading, setUploading] = React.useState(false);
@@ -43,7 +42,7 @@ const FileUpload = () => {
       try {
         setUploading(true);
         const data = await uploadToS3(file);
-        console.log("meow", data);
+        console.log("heyya", data);
         if (!data?.file_key || !data.file_name) {
           toast.error("Something went wrong");
           return;
@@ -81,7 +80,7 @@ const FileUpload = () => {
             {/* loading state */}
             <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
             <p className="mt-2 text-sm text-slate-400">
-              Spilling Tea to GPT...
+              Uploading PDF to GPT...
             </p>
           </>
         ) : (

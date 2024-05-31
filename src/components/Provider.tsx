@@ -2,6 +2,7 @@
 import React from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
+// Define the type of the children prop
 type Props = {
   children: React.ReactNode;
 };

@@ -1,5 +1,6 @@
 import { PutObjectCommandOutput, S3 } from "@aws-sdk/client-s3";
 
+// import { PutObjectCommandOutput, S3 } from "aws-sdk";
 export async function uploadToS3(
   file: File
 ): Promise<{ file_key: string; file_name: string }> {
@@ -36,6 +37,7 @@ export async function uploadToS3(
   });
 }
 
+// export async function uploadToS3(file: File) 
 export function getS3Url(file_key: string) {
   const url = `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.us-east-2.amazonaws.com/${file_key}`;
   return url;
