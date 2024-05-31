@@ -11,6 +11,7 @@ import { Message } from "ai";
 
 type Props = { chatId: number };
 
+// ChatComponent component
 const ChatComponent = ({ chatId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
@@ -21,6 +22,8 @@ const ChatComponent = ({ chatId }: Props) => {
       return response.data;
     },
   });
+
+  // useChat hook
   const { input, handleInputChange, handleSubmit, messages} = useChat({
     api: "/api/chat",
     body: { chatId },
@@ -28,6 +31,7 @@ const ChatComponent = ({ chatId }: Props) => {
 
   });
 
+  // useEffect hook
   React.useEffect(() => {
     const messageContainer = document.getElementById("message-container");
     if (messageContainer) {

@@ -2,6 +2,8 @@ import { S3 } from "@aws-sdk/client-s3";
 import fs from "fs";
 import path from 'path'
 import os from 'os'
+
+// import { S3 } from "aws-sdk";
 export async function downloadFromS3(file_key: string): Promise<string> {
     return new Promise(async (resolve, reject) => {
         try {

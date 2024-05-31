@@ -8,6 +8,7 @@ type Props = {
   messages: Message[];
 };
 
+// MessageList component
 const MessageList = ({ messages, isLoading }: Props) => {
   if (isLoading) {
     return (
