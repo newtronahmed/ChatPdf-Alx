@@ -12,9 +12,20 @@ import { Message } from "ai";
 type Props = { chatId: number };
 
 const ChatComponent = ({ chatId }: Props) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["chat", chatId],
+    queryFn: async () => {
+      const response = await axios.post<Message[]>("/api/get-messages", {
+        chatId,
+      });
+      return response.data;
+    },
+  });
   const { input, handleInputChange, handleSubmit, messages} = useChat({
     api: "/api/chat",
     body: { chatId },
+    initialMessages: data || [],
+
   });
 
   React.useEffect(() => {
@@ -29,7 +40,7 @@ const ChatComponent = ({ chatId }: Props) => {
 
   return (
     <div
-      className="relative max-h-screen overflow-scroll"
+      className="relative h-full overflow-scroll"
       id="message-container"
     >
       {/* header */}
@@ -38,7 +49,7 @@ const ChatComponent = ({ chatId }: Props) => {
       </div>
 
     {/* message list */}
-    <MessageList messages={messages} isLoading={false} />
+    <MessageList messages={messages} isLoading={isLoading} />
 
       <form
         onSubmit={handleSubmit}
