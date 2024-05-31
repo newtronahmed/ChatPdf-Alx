@@ -4,10 +4,23 @@ import { UserButton } from "@clerk/nextjs"
 import Link from "next/link";
 import { ArrowRight, LogIn } from "lucide-react";
 import FileUpload from "@/components/FileUpload";
+import { db } from "@/lib/db";
+import { chats } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
+
+
 
 export default async function Home() {
   const { userId } = await auth();
   const isAuth = !!userId;
+  let Chat;
+  if (userId) {
+    Chat = await db.select().from(chats).where(eq(chats.userId, userId));
+    if (Chat) {
+      Chat = Chat[0];
+    }
+  }
+
   return (
 
     <div className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
@@ -18,9 +31,18 @@ export default async function Home() {
             <UserButton afterSignOutUrl="/" />
           </div>
 
-          <div className="flex mt-2">
-            {isAuth && <Button>Upload PDF</Button>}
-          </div>  
+           <div className="flex mt-2">
+            {isAuth && Chat && (
+              <>
+                <Link href={`/chat/${Chat.id}`}>
+                  <Button>
+                    Go to Chats <ArrowRight className="ml-2" />
+                  </Button>
+                </Link>
+                
+              </>
+            )}
+          </div> 
           
 
           <p className="max-w-xl mt-1 text-lg text-slate-600">
