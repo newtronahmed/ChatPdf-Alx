@@ -80,7 +80,7 @@ Now, the moment you've been waiting for! Run the project using the following com
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. If you don't see anything, try refreshing a few times or maybe rebooting your computer (just kidding, please don't do that).
 
-And there you have it! You're now ready to experience the awesomeness that is "Chat-PDF-ALX." Enjoy chatting with the AI assistant, uploading PDFs, and maybe even subscribing to the premium features (if you're feeling fancy).
+And there you have it! You're now ready to experience the awesomeness that is "Chat-PDF-ALX." Enjoy chatting with the AI assistant, uploading PDFs.
 
 
 Happy chatting!
