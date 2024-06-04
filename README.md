@@ -73,6 +73,11 @@ This will install all the dependencies listed in the `package.json` file, includ
 
 Create a `.env` file in the root directory of your project and add the required environment variables. Don't worry, we'll provide you with a list of the variables you need (because we're nice like that).
 
+You will need: `clerk env variable.`
+Database : `postgressql  using neondb`
+Pinecone : `API key`
+`OpenAI API`
+
 6. **Run the project**
 
 Now, the moment you've been waiting for! Run the project using the following command:
